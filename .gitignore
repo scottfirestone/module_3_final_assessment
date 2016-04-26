@@ -16,3 +16,4 @@
 /log/*.log
 /tmp
 /fixtures/vcr_cassettes
+/config/application.yml
