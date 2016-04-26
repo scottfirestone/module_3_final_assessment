@@ -6,9 +6,13 @@ RSpec.describe "Best buy service", type: :request do
       service = BestBuyService.new
       response = service.product_search("sennheiser")
 
-      expect(response).to be(:success)
+      expected_keys = [
+        :name, :sku, :salePrice, :shortDescription, :customerReviewAverage, :thumbnailImage
+      ]
 
-
+      (response[:products]).each do |product|
+        expect(product.keys).to eq(expected_keys)
+      end
     end
   end
 end

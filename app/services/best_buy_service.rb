@@ -11,7 +11,6 @@ class BestBuyService
       req.params["format"] = "json"
       req.params["apiKey"] = "#{api_key}"
     end
-    binding.pry
     parse(response)
   end
 
