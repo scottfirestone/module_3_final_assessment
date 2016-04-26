@@ -43,4 +43,25 @@ RSpec.describe "Items", type: :request do
     expect(json["item"]["description"]).to eq("Description")
     expect(json["item"]["description"]).to_not eq("You shouldn't see this")
   end
+
+  it "delets an item by id" do
+    item = Item.create(
+      name: "Item Name",
+      description: "Description",
+      image_url: "Image Url"
+    )
+
+    other_item = Item.create(
+      name: "Dumb widget",
+      description: "You shouldn't see this",
+      image_url: "A lie"
+    )
+
+    expect(Item.all.count).to eq(2)
+
+    delete "/api/v1/items/#{other_item.id}.json"
+
+    expect(response.status).to eq(204)
+    expect(Item.all.count).to eq(1)
+  end
 end
