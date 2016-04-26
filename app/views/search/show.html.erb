@@ -1,12 +1,12 @@
 <div class="product">
   <ul>
-    <% @results.each do |result| %>
-      <li><%= result.sku %></li>
-      <li><%= result.name %></li>
-      <li><%= result.customer_avg_review %></li>
-      <li><%= result.short_description %></li>
-      <li><%= result.sale_price %></li>
-      <li><%= image_tag result.image %></li>
+    <% @products.each do |product| %>
+      <li><%= product.sku %></li>
+      <li><%= product.name %></li>
+      <li><%= product.customer_review_average %></li>
+      <li><%= product.short_description %></li>
+      <li><%= product.sale_price %></li>
+      <li><%= image_tag product.image %></li>
     <% end %>
   </ul>
 </div>
