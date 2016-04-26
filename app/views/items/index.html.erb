@@ -1,8 +1,8 @@
 <div class="container">
-  <%= form_tag ("/search", method: "get") do %>
-    <%= label.tag (:q, "Search:") %>
-    <%= text_field.tag :q %>
-    <%= submit.tag "search" %>
+  <%= form_tag("/search", method: "get") do %>
+    <%= label_tag(:q, "Search:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag "search" %>
   <% end  %>
   <div class="row">
     <div class="col-sm-12">

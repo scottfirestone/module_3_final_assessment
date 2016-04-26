@@ -7,8 +7,9 @@ RSpec.feature "User searches products" do
     fill_in "q", with: "sennheiser"
     click_on "search"
 
-    expect(current_url).to eq("/search")
+    expect(current_path).to have_content("/search")
+
     results = []
-    results = find(".product").("li")
+    results = find(".product").("li").all
   end
 end
