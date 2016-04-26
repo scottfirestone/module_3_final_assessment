@@ -64,4 +64,19 @@ RSpec.describe "Items", type: :request do
     expect(response.status).to eq(204)
     expect(Item.all.count).to eq(1)
   end
+
+  it "creates an item" do
+    expect(Item.all.count).to eq(0)
+
+    post "api/v1/items", { name: "Dumb Widget", description: "do it", image_url: "hamsterdance.com"}
+    json = JSON.parse(response.body)
+    expected_keys = ["name", "description", "image_url"]
+
+    expect(response.status).to eq(201)
+    expect(Item.all.count).to eq(1)
+    expect(json["item"].keys).to eq(expected_keys)
+    expect(json["item"]["name"]).to eq("Dumb Widget")
+    expect(json["item"]["description"]).to eq("do it")
+    expect(json["item"]["image_url"]).to eq("hamsterdance.com")
+  end
 end
