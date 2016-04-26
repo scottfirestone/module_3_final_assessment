@@ -1,4 +1,5 @@
 class BestBuyService
+
   def initialize
     @_api_key = ENV["BEST_BUY_KEY"]
     @_connection = Faraday.new("http://api.bestbuy.com/v1/")

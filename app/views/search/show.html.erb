@@ -1,11 +1,14 @@
 <div class="products">
+  <h1>Products</h1>
   <% @products.each do |product| %>
     <ul class="product">
-      <li><%= product.sku %></li>
-      <li><%= product.name %></li>
-      <li><%= product.customer_review_average %></li>
-      <li><%= product.short_description %></li>
-      <li><%= product.sale_price %></li>
+      <li>Sku: <%= product.sku %></li>
+      <li>Name: <%= product.name %></li>
+      <% if product.customer_review_average %>
+        <li>Avg. Reviews: <%= product.customer_review_average %></li>
+      <% end %>
+      <li>Description: <%= product.short_description %></li>
+      <li>Sale Price: <%= product.sale_price %></li>
       <li><%= image_tag product.image %></li>
     </ul>
   <% end %>

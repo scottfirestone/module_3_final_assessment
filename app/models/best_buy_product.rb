@@ -17,7 +17,7 @@ class BestBuyProduct
 
   def self.find_all_by(q)
     BestBuyService.new.product_search(q)[:products].map { |raw_product|
-      a = BestBuyProduct.new(raw_product)
+      new(raw_product)
     }
   end
 end

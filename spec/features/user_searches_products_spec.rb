@@ -14,6 +14,12 @@ RSpec.feature "User searches products" do
       results = find(".products").all("ul")
 
       expect(results.count).to eq(15)
+      results.each do |result|
+        expect(result).to have_content("Sku")
+        expect(result).to have_content("Name")
+        expect(result).to have_content("Description")
+        expect(result).to have_content("Sale Price")
+      end
     end
   end
 end
