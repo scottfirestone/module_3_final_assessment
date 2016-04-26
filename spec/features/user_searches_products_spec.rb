@@ -22,4 +22,24 @@ RSpec.feature "User searches products" do
       end
     end
   end
+
+  scenario "they see results for multiple query params" do
+    VCR.use_cassette("best buy search query mult params") do
+      visit "/"
+      fill_in "q", with: "sennheiser headphones white"
+      click_on "search"
+      expect(current_path).to have_content("/search")
+
+      results = []
+      results = find(".products").all("ul")
+
+      expect(results.count).to eq(15)
+      results.each do |result|
+        expect(result).to have_content("Sku")
+        expect(result).to have_content("Name")
+        expect(result).to have_content("Description")
+        expect(result).to have_content("Sale Price")
+      end
+    end
+  end
 end
