@@ -11,9 +11,9 @@ RSpec.feature "User searches products" do
       expect(current_path).to have_content("/search")
 
       results = []
-      results = find(".product").all("")
+      results = find(".products").all("ul")
 
-      expect(results.count).to eq(10)
+      expect(results.count).to eq(15)
     end
   end
 end

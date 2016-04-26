@@ -8,7 +8,7 @@ class BestBuyProduct
 
   def initialize(params)
     @name = params[:name]
-    @sku = params[:sku]
+    @sku = params[:sku] if params[:sku]
     @sale_price = params[:salePrice]
     @short_description = params[:shortDescription]
     @customer_review_average = params[:customerReviewAverage]
@@ -17,7 +17,7 @@ class BestBuyProduct
 
   def self.find_all_by(q)
     BestBuyService.new.product_search(q)[:products].map { |raw_product|
-      BestBuyProduct.new(raw_product)
+      a = BestBuyProduct.new(raw_product)
     }
   end
 end

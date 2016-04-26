@@ -8,6 +8,7 @@ class BestBuyService
     response = connection.get do |req|
       req.url "products(search=#{query})?"
       req.params["show"] = "name,sku,salePrice,shortDescription,customerReviewAverage,thumbnailimage"
+      req.params["pageSize"] = "15"
       req.params["format"] = "json"
       req.params["apiKey"] = "#{api_key}"
     end
